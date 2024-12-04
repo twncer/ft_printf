@@ -6,12 +6,13 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:31:03 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 06:24:27 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/04 14:36:44 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
+#include <limits.h>
 
 int	printchar(char c)
 {
@@ -73,13 +74,16 @@ int	format_pointer(void *p)
 
 	cup = 0;
 	if (not(p))
-	{
-		if (printstr("(nil)") == -1)
-			return (-1);
-		else
-			return (5);
-	}
-	printstr("0x");
-	cup = 2 + baseator((long long)p, 16, false);
-	return (cup);
+		return (printstr("(nil)"));
+	if (printstr("0x") == -1)
+		return (-1);
+	if ((long long)p == (long long)LONG_MIN)
+		cup = printstr("8000000000000000");
+	else if ((long long)p < 0 && (long long)p > (long long)LONG_MIN)
+		cup = baseator((-(long long)p) - 1, 16, false);
+	else
+		cup = baseator((long long)p, 16, false);
+	if (cup == -1)
+		return (-1);
+	return (cup + 2);
 }

@@ -6,11 +6,12 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:31:03 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 02:32:16 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/04 02:38:34 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_utils.h"
+#include <unistd.h>
 
 int printchar(char c)
 {
@@ -71,10 +72,12 @@ int format_pointer(void *p)
 
     cup = 0;
     if (not(p))
+    {
         if (printstr("(nil)") == -1)
             return (-1);
         else
             return (5);
+    }
     printstr("0x");
     cup = 2 + baseator((long long)p, 16, false);
     return (cup);

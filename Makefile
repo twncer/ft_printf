@@ -6,7 +6,7 @@
 #    By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 02:31:10 by btuncer           #+#    #+#              #
-#    Updated: 2024/12/04 02:35:52 by btuncer          ###   ########.fr        #
+#    Updated: 2024/12/04 04:42:42 by btuncer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SOURCES = ft_utils.c ft_printf_utils.c
+SOURCES = ft_printf.c \
+			ft_utils.c \
+			ft_printf_utils.c
 
 OBJ = $(SOURCES:.c=.o)
 

@@ -6,11 +6,11 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:30:49 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 02:37:57 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/04 05:01:51 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdbool.h>
+#include <stdbool.h>
 
 bool not(bool condition)
 {

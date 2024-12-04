@@ -6,14 +6,11 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:31:05 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 02:57:33 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/04 05:02:27 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "ft_utils.h"
+#include "ft_printf.h"
 
 int format_hub(char format, va_list valist)
 {
@@ -45,10 +42,9 @@ int format_string(const char **str, va_list valist)
         return (format_hub(format, valist));
     }
     *str = (*str) + 1;
-    if (not(format == '%'))
-        printchar('%');
-    else
-        return (0);
+    printchar('%');
+    if (format == '%')
+        *str = (*str) + 1;
     return (1);
 }
 
@@ -79,93 +75,4 @@ int ft_printf(const char *str, ...)
     }
     va_end(valist);
     return (cup);
-}
-
-#include <unistd.h>
-#include <limits.h>
-
-int main()
-{
-    void *ponter;
-    
-    printf("%d\n", baseator(16, 16, false));
-
-    printstr("\n--------------------------\n\n   ı~~~~~~~~~~~~~~~~~ı\n   |                 |\n   ~ ft_printf tests ~\n   |                 |\n   ı~~~~~~~~~~~~~~~~~ı\n");
-    printchar('\n');
-
-    printstr("\n*-- printf --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(NULL, 42));
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(NULL, 42)); printchar('\n');
-
-    printstr("\n*-- printf2 --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" test_case \"\n", 42) - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" test_case \"\n", 42) - 2); printchar('\n');
-
-    printstr("\n*-- printf3 --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf("", 42));
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf("", 42)); printchar('\n');
-
-    printstr("\n*-- printf4 --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %K btuncer %w \"\n", 'A', 48, '0', NULL) - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %K btuncer %w \"\n", 'A', 48, '0', NULL) - 2); printchar('\n');
-
-    printstr("\n*-- %c --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %c %c %c %c \"\n", 'A', 48, '0', NULL) - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %c %c %c %c \"\n", 'A', 48, '0', NULL) - 2); printchar('\n');
-
-    printstr("\n*-- %s --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %s %s %s \"\n", "test_case", NULL, "intrabtuncer") - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %s %s %s \"\n", "test_case", NULL, "intrabtuncer") - 2); printchar('\n');
-
-    printstr("\n*-- %p --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %p %p %p \"\n", "ponter", ponter, NULL) - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %p %p %p \"\n", "ponter", ponter, NULL) - 2); printchar('\n');
-
-    printstr("\n*-- %d && %i --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %d %d %d %d %d \"\n",
-                                42, -42, INT_MIN, INT_MAX, NULL) - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %d %d %d %d %d \"\n",
-                                42, -42, INT_MIN, INT_MAX, NULL) - 2); printchar('\n');
-    
-    printstr("\n*-- %u --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %u %u %u %u \"\n", INT_MIN, 2147483650, -1, NULL) - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %u %u %u %u \"\n", INT_MIN, 2147483650, -1, NULL) - 2); printchar('\n');
-
-    printstr("\n*-- %x --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %x %x %x %x %x \"\n", NULL, INT_MIN, INT_MAX, 0, '0') - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %x %x %x %x %x \"\n", NULL, INT_MIN, INT_MAX, 0, '0') - 2); printchar('\n');
-
-    printstr("\n*-- %X --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %X %X %X %X %X %X %X \"\n", NULL, INT_MIN, INT_MAX, 0, '0', LONG_MIN, LONG_MAX) - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %X %X %X %X %X %X %X \"\n", NULL, INT_MIN, INT_MAX, 0, '0', LONG_MIN, LONG_MAX) - 2); printchar('\n');
-
-    printstr("\n*-- %c --*\n");
-    printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %% \"\n") - 2);
-    printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %% \"\n") - 2); printchar('\n');
-
-    printstr("\n\n   ı~~~~~~~~~~~~~~~~~ı\n   |                 |\n   ~ ft_printf done  ~\n   |                 |\n   ı~~~~~~~~~~~~~~~~~ı\n\n--------------------------");
 }

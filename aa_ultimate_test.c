@@ -7,7 +7,8 @@
 int main()
 {
     void *ponter;
-    
+    char *ponterr = "pontero";
+
     printstr("\n--------------------------\n\n   ı~~~~~~~~~~~~~~~~~ı\n   |                 |\n   ~ ft_printf tests ~\n   |                 |\n   ı~~~~~~~~~~~~~~~~~ı\n");
     printchar('\n');
 
@@ -43,15 +44,15 @@ int main()
 
     printstr("\n*-- %s --*\n");
     printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %s %s %s %s %s \"\n", "test_case", NULL, "intrabtuncer", "", " ") - 2);
+    printf("=> (%d)\n",    printf(" %s %s %s %s %s %s \"\n", "test_case", NULL, "intrabtuncer", "", " ", ponterr) - 2);
     printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %s %s %s %s %s \"\n", "test_case", NULL, "intrabtuncer", "", " ") - 2); printchar('\n');
+    printf("=> (%d)\n", ft_printf(" %s %s %s %s %s %s \"\n", "test_case", NULL, "intrabtuncer", "", " ", ponterr) - 2); printchar('\n');
 
     printstr("\n*-- %p --*\n");
     printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42) - 2);
+    printf("=> (%d)\n",    printf(" %p %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42, ponterr) - 2);
     printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42) - 2); printchar('\n');
+    printf("=> (%d)\n", ft_printf(" %p %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42, ponterr) - 2); printchar('\n');
 
     printstr("\n*-- %d && %i --*\n");
     printstr(".  printf: \"");
@@ -81,9 +82,9 @@ int main()
 
     printstr("\n*-- %% --*\n");
     printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %% %%%|%%%%|%%%%% | %%%%%%%%%%%% %%%%% %%%%%\"\n") - 2);
+    printf("=> (%d)\n",    printf(" %% %%%|%%%%|%%%%% | %%%%%%%%%%%% %%%%% \"\n") - 2);
     printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %% %%%|%%%%|%%%%% | %%%%%%%%%%%% %%%%% %%%%%\"\n") - 2); printchar('\n');
+    printf("=> (%d)\n", ft_printf(" %% %%%|%%%%|%%%%% | %%%%%%%%%%%% %%%%% \"\n") - 2); printchar('\n');
 
     printstr("\n\n   ı~~~~~~~~~~~~~~~~~ı\n   |                 |\n   ~ ft_printf done  ~\n   |                 |\n   ı~~~~~~~~~~~~~~~~~ı\n\n--------------------------");
 }

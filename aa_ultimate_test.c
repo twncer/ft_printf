@@ -4,6 +4,9 @@
 #include "ft_printf.c"
 #include "ft_printf.h"
 
+// you should use "printchar" and "printstr" functions from
+// ft_printf_utils.c OR replace those with your putstr etc.
+
 int main()
 {
     void *ponter;

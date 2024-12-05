@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:31:05 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/05 15:47:14 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/05 20:00:46 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_printf(const char *str, ...)
 			cup = cup + format_string(&str, valist);
 		else
 		{
-			printchar(*str);
+			cup = cup + printchar(*str);
 			cup++;
 			str++;
 		}

@@ -9,6 +9,8 @@ int main()
     void *ponter;
     char *ponterr = "pontero";
 
+    ft_printf("%p\n\n\n", 9223372036854775810);
+
     printstr("\n--------------------------\n\n   ı~~~~~~~~~~~~~~~~~ı\n   |                 |\n   ~ ft_printf tests ~\n   |                 |\n   ı~~~~~~~~~~~~~~~~~ı\n");
     printchar('\n');
 
@@ -50,9 +52,15 @@ int main()
 
     printstr("\n*-- %p --*\n");
     printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %p %p %p %p %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42, ponterr, LONG_MIN, LONG_MAX) - 2);
+    printf("=> (%d)\n",    printf(" %p %p %p %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42, ponterr, LONG_MIN, LONG_MAX) - 2);
     printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %p %p %p %p %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42, ponterr, LONG_MIN, LONG_MAX) - 2); printchar('\n');
+    printf("=> (%d)\n", ft_printf(" %p %p %p %p %p %p %p %p \"\n", "ponter", ponter, NULL, "", -42, ponterr, LONG_MIN, LONG_MAX) - 2); printchar('\n');
+
+    printstr("\n*-- %p2 (advanced: it's OK to fail these) --*\n");
+    printstr(".  printf: \"");
+    printf("=> (%d)\n",    printf(" %p %p %p %p %p %p \"\n", LONG_MIN + 1, LONG_MIN + 2, LONG_MIN + 3, -ULONG_MAX, ULONG_MAX, ULONG_MAX - 1) - 2);
+    printstr("ft_printf: \"");
+    printf("=> (%d)\n", ft_printf(" %p %p %p %p %p %p \"\n", LONG_MIN + 1, LONG_MIN + 2, LONG_MIN + 3, -ULONG_MAX, ULONG_MAX, ULONG_MAX - 1) - 2); printchar('\n');
 
     printstr("\n*-- %d && %i --*\n");
     printstr(".  printf: \"");
@@ -64,9 +72,9 @@ int main()
     
     printstr("\n*-- %u --*\n");
     printstr(".  printf: \"");
-    printf("=> (%d)\n",    printf(" %u %u %u %u %u %u %u \"\n", INT_MIN, 2147483650, -1, NULL, UINT_MAX, LONG_MAX, LLONG_MAX) - 2);
+    printf("=> (%d)\n",    printf(" %u %u %u %u %u %u %u \"\n", INT_MIN, 2147483650, -1, NULL, ULONG_MAX, LONG_MAX, LLONG_MAX) - 2);
     printstr("ft_printf: \"");
-    printf("=> (%d)\n", ft_printf(" %u %u %u %u %u %u %u \"\n", INT_MIN, 2147483650, -1, NULL, UINT_MAX, LONG_MAX, LLONG_MAX) - 2); printchar('\n');
+    printf("=> (%d)\n", ft_printf(" %u %u %u %u %u %u %u \"\n", INT_MIN, 2147483650, -1, NULL, ULONG_MAX, LONG_MAX, LLONG_MAX) - 2); printchar('\n');
 
     printstr("\n*-- %x --*\n");
     printstr(".  printf: \"");

@@ -6,13 +6,13 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:30:49 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 06:22:31 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/05 15:46:51 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 
-bool	not(bool condition)
+bool	fnot(bool condition)
 {
 	return (!condition);
 }
@@ -45,7 +45,7 @@ int	intlen_base(long long n, int base)
 		n = n / base;
 		cup++;
 	}
-	if (not(n == 0))
+	if (fnot(n == 0))
 		cup++;
 	return (cup);
 }

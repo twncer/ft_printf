@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:31:05 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 14:21:12 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/05 15:47:14 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ int	ft_printf(const char *str, ...)
 	int		cup;
 	int		cup_history;
 
-	if (not(str))
+	if (fnot(str))
 		return (-1);
 	cup = 0;
 	va_start(valist, str);
 	while (*str)
 	{
-		if (not(cup == -1))
+		if (fnot(cup == -1))
 			cup_history = cup;
 		if (*str == '%')
 			cup = cup + format_string(&str, valist);
@@ -70,7 +70,7 @@ int	ft_printf(const char *str, ...)
 			cup++;
 			str++;
 		}
-		if (not(cup >= cup_history) && not(cup == -1) && (not(*str == '%')))
+		if (fnot(cup >= cup_history) && fnot(cup == -1) && (fnot(*str == '%')))
 			cup = -1;
 	}
 	va_end(valist);

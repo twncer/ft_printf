@@ -6,13 +6,13 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 02:31:03 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 14:36:44 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/05 15:46:40 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 #include <limits.h>
+#include <unistd.h>
 
 int	printchar(char c)
 {
@@ -21,7 +21,7 @@ int	printchar(char c)
 
 int	printstr(char *str)
 {
-	if (not(str))
+	if (fnot(str))
 		return (printstr("(null)"));
 	return (write(1, str, len(str)));
 }
@@ -59,7 +59,7 @@ int	baseator(long long n, int base, bool upper)
 	}
 	else if (upper)
 		error_check = printchar(uppercase(BASE_TEMPLATE[n]));
-	else if (not(upper))
+	else if (fnot(upper))
 		error_check = printchar(BASE_TEMPLATE[n]);
 	if (error_check == -1)
 		return (-1);
@@ -70,19 +70,23 @@ int	baseator(long long n, int base, bool upper)
 
 int	format_pointer(void *p)
 {
-	int	cup;
+	int			cup;
+	long long	po;
 
+	po = (long long)p;
 	cup = 0;
-	if (not(p))
+	if (fnot(p))
 		return (printstr("(nil)"));
 	if (printstr("0x") == -1)
 		return (-1);
-	if ((long long)p == (long long)LONG_MIN)
+	if (po == (long long)LONG_MIN)
 		cup = printstr("8000000000000000");
-	else if ((long long)p < 0 && (long long)p > (long long)LONG_MIN)
-		cup = baseator((-(long long)p) - 1, 16, false);
+	else if (po == (long long)ULONG_MAX)
+		cup = printstr("ffffffffffffffff");
+	else if (po < 0)
+		cup = baseator((-po), 16, false);
 	else
-		cup = baseator((long long)p, 16, false);
+		cup = baseator(po, 16, false);
 	if (cup == -1)
 		return (-1);
 	return (cup + 2);

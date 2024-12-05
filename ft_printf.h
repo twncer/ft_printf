@@ -6,7 +6,7 @@
 /*   By: btuncer <btuncer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 03:06:22 by btuncer           #+#    #+#             */
-/*   Updated: 2024/12/04 06:28:22 by btuncer          ###   ########.fr       */
+/*   Updated: 2024/12/05 15:46:58 by btuncer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdarg.h>
 # include <stdbool.h>
 
-bool	not(bool condition);
+bool	fnot(bool condition);
 int		len(char *str);
 int		intlen_base(long long n, int base);
 char	uppercase(char c);
